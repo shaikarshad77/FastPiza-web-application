@@ -1,0 +1,32 @@
+let cart = [];
+let total = 0;
+
+function addToCart(name, price) {
+    cart.push({ name, price });
+    total += price;
+
+    document.getElementById("cart-count").textContent = cart.length;
+    document.getElementById("total").textContent = `₹${total}`;
+
+    const li = document.createElement("li");
+    li.className = "mb-2";
+    li.textContent = `${name} - ₹${price}`;
+
+    document.getElementById("cart-items").appendChild(li);
+}
+
+function placeOrder() {
+    if (cart.length === 0) {
+        alert("🛒 Your cart is empty!");
+        return;
+    }
+
+    alert("🎉 Order placed successfully!");
+
+    cart = [];
+    total = 0;
+
+    document.getElementById("cart-items").innerHTML = "";
+    document.getElementById("cart-count").textContent = "0";
+    document.getElementById("total").textContent = "₹0";
+}
